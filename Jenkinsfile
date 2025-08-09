@@ -2,7 +2,7 @@ pipeline {
   agent { label 'Jenkins-agent' }
   tools {
     jdk 'Java17'
-    maven 'maven3' // ensure this tool is configured in Jenkins Tool Configuration
+    maven 'maven3'
   }
   stages {
     stage('Cleanup Workspace') {
@@ -26,6 +26,12 @@ pipeline {
       }
     }
   }
+  post {
+    always {
+      cleanWs()
+    }
+  }
 }
+
 
   
